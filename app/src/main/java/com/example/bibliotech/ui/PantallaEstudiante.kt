@@ -621,5 +621,6 @@ fun PantallaEstudiantes(
                 modifier = Modifier.height(16.dp)
             )
         }
+
     }
 }
