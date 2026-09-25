@@ -15,6 +15,7 @@ room = "2.6.1"
 
 # KSP compatible con Kotlin 2.2.10
 ksp = "2.3.6"
+uiText = "1.12.1"
 
 [libraries]
 androidx-compose-material-icons={group="androidx.compose.material",name = "material-icons-extended"}
@@ -43,6 +44,7 @@ androidx-room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = 
 
 # Compilador que genera automáticamente Entity y DAO
 androidx-room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "room" }
+androidx-compose-ui-text = { group = "androidx.compose.ui", name = "ui-text", version.ref = "uiText" }
 
 
 [plugins]
