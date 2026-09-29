@@ -5,8 +5,10 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Person
+import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -16,6 +18,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
@@ -35,12 +38,12 @@ import com.example.bibliotech.model.Estudiante
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun PantallaAgregarEstudiante(
+fun PantallaDetalleEstudiante(
     estudiante : Estudiante,
     onRegresar: () -> Unit,
     navController: NavHostController,
     onEditar: (Int) -> Unit,
-    onEliminar: () -> Unit
+    onEliminar: (Estudiante) -> Unit
 ) {
     var mostrarDialogo by remember { mutableStateOf(false) }
     val mensaje = navController
@@ -74,9 +77,9 @@ fun PantallaAgregarEstudiante(
             Icon(
                 imageVector = Icons.Default.Person,
                 contentDescription = "Estudiante",
-                tint = Color.White
+                tint = Color.White,
+                modifier = Modifier.size(15.dp),
             )
-            modifier = Modifier.padding(60.dp)
 
             Spacer(modifier = Modifier.height(16.dp))
 
@@ -104,7 +107,7 @@ fun PantallaAgregarEstudiante(
 
             Button(
                 onClick = { mostrarDialogo = true },
-                modifier = Modifier.fillMaxWidth(estudiante.id),
+                modifier = Modifier.fillMaxWidth(),
                 colors = ButtonDefaults.buttonColors(containerColor = Color.Red)
             )
             {
@@ -116,6 +119,29 @@ fun PantallaAgregarEstudiante(
             ) {
                 Text("Regresar")
             }
+
+            if (mostrarDialogo) {
+                AlertDialog(
+                    onDismissRequest = { mostrarDialogo = false },
+                    title = { Text("Eliminar Estudiante") },
+                    text = { Text("¿Estás seguro de que deseas eliminar este estudiante?") },
+                    confirmButton = {
+                        TextButton(onClick = {
+                            mostrarDialogo = false
+                            onEliminar(estudiante)}
+                        ) {
+                            Text("Eliminar")
+                        }
+                    },
+                    dismissButton = {
+                        TextButton(onClick = {
+                            mostrarDialogo = false
+                        }) {
+                            Text("Cancelar")
+                        }
+                    }
+                )
+               }
+            }
         }
     }
-}
