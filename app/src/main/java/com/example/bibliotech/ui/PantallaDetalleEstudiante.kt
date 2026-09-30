@@ -90,6 +90,8 @@ fun PantallaDetalleEstudiante(
 
             Spacer(modifier = Modifier.height(16.dp))
             Text(text = "Carnet: ${estudiante.carnet}", color = Color.White)
+            Text(text = "Nombre: ${estudiante.nombres}", color = Color.White)
+            Text(text = "Apellidos: ${estudiante.apellidos}", color = Color.White)
             Text(text = "Grado: ${estudiante.grado}", color = Color.White)
             Text(text = "Seccion: ${estudiante.seccion}", color = Color.White)
             Text(

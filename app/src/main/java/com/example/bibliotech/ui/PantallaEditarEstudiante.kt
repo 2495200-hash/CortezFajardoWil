@@ -43,9 +43,9 @@ fun PantallaEditarEstudiante(
 
     //VARIALES DEL FORMULARIO
 
-    var nombre by remember { mutableStateOf("") }
-    var carnet by remember { mutableStateOf("") }
-    var apellidos by remember { mutableStateOf("") }
+    var nombre by remember { mutableStateOf(estudiante.carnet) }
+    var carnet by remember { mutableStateOf(estudiante.nombres) }
+    var apellidos by remember { mutableStateOf(estudiante.apellidos) }
 
     //GRADO
 
@@ -57,14 +57,14 @@ fun PantallaEditarEstudiante(
 
     //SECCIONES
     val secciones = listOf("A","B","C")
-    var seccion by remember { mutableStateOf(secciones[0]) }
-    var grado by remember { mutableStateOf(grados[0]) }
+    var seccion by remember { mutableStateOf(estudiante.seccion) }
+    var grado by remember { mutableStateOf(estudiante.grado) }
     var expandirSeccion by remember { mutableStateOf(false) }
     var expandirGrado by remember { mutableStateOf(false) }
 
     //ESTADO
 
-    var activo by remember { mutableStateOf(false) }
+    var activo by remember { mutableStateOf(estudiante.activo) }
 
     Scaffold(
         containerColor = Color.Black,
