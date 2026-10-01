@@ -52,7 +52,7 @@ abstract class BibliotecaDatabase : RoomDatabase() {
     // =========================
     abstract fun estudianteDao(): EstudianteDao
 
-    abstract
+    abstract fun prestamoDao(): PrestamoDao
 
 
 }

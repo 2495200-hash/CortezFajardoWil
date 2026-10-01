@@ -34,7 +34,7 @@ data class Prestamo (
     // Fecha de prestamo
     val fechaPrestamo: String,
     // Fecha de devolucion
-    val fechaDevolucion: String,
+    val fechaDevolucion: String? = null,
     // Estado del prestamo
     val devuelto: Boolean
 ){

@@ -3,6 +3,7 @@ package com.example.bibliotech.data
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
+import androidx.room.Update
 import com.example.bibliotech.model.Prestamo
 
 
@@ -12,7 +13,7 @@ interface PrestamoDao {
     // Aqui se hace el crud y metodos para trabajar con el ROOM
 
     @Insert
-    fun insertar(prestamo: Prestamo)
+    fun insertar(prestamo: Prestamo): Long
 
     @Query("SELECT * FROM prestamos WHERE devuelto = 0")
 
@@ -21,7 +22,8 @@ interface PrestamoDao {
     @Query("SELECT * FROM prestamos WHERE id = :id")
     fun obtenerPrestamoPorId(id: Int): Prestamo?
 
-
+    @Update
+    fun actualizarPrestamo(prestamo: Prestamo)
 
 
 }
